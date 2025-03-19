@@ -110,19 +110,19 @@ $Log Loss=−(y⋅log(p)+(1−y)⋅log(1−p))$
 
    soft ECE:
 
-   > Soft-Binned ECE = $$\sum_{i=1}^n \frac{w_i}{\sum_{j=1}^n w_j} |a_i - c_i|$$
+   > $$Soft-Binned ECE = \sum_{i=1}^n \frac{w_i}{\sum_{j=1}^n w_j} |a_i - c_i|$$
    >
    > 其中，*n* 是分区的数量，w **i 是第 *i* 个分区的权重，a** i 是第 i 个分区内的预测概率的平均值，c **i 是第 i 个分区内的真实概率的平均值。Soft-Binned ECE 的关键点是使用一个连续的函数来计算每个分区的权重和平均值，而不是使用一个离散的函数。具体来说，对于每个样本(*x*, *y*)，它的预测概率为 *p* = *f*(*x*)，它对应的分区索引为 *k* = ⌊ n** p **⌋**+1，那么它对第 *i* 个分区的权重贡献为：
    >
-   > $w_i(x,y)=max(0,1−∣i−k∣)$
+   > $$w_i(x,y)=max(0,1−∣i−k∣)$$
    >
    > 它对第 i* 个分区的平均预测概率贡献为：
    >
-   > $a_i(x,y)=w_i(x,y)p$
+   > $$a_i(x,y)=w_i(x,y)p$$
    >
    > 它对第 i* 个分区的平均真实概率贡献为：
    >
-   > $c_i(x,y)=w_i(x,y)I[y=argmax(p)]$
+   > $$c_i(x,y)=w_i(x,y)I[y=argmax(p)]$$
    >
    > 其中 I 是指示函数。可以看出，这些函数都是连续可微的，因此可以直接用于训练过程中。更多细节可以参考 [这篇论文](https://deepai.org/publication/soft-calibration-objectives-for-neural-networks)。
 
@@ -152,7 +152,7 @@ $Log Loss=−(y⋅log(p)+(1−y)⋅log(1−p))$
 
    Soft AvUC 的具体公式如下：
 
-   Soft AvUC = $$\sum_{i=1}^n \frac{w_i}{\sum_{j=1}^n w_j} |v_i - u_i|$$
+   $$Soft AvUC = \sum_{i=1}^n \frac{w_i}{\sum_{j=1}^n w_j} |v_i - u_i|$$
 
 6. AUROC
 
@@ -177,23 +177,16 @@ $Log Loss=−(y⋅log(p)+(1−y)⋅log(1−p))$
   参数化方法假设校准映射属于有限维参数化族族，可以通过最小化损失函数来学习参数。非参数化方法则假设校准映射由无限维参数描述，可以通过直方图、贝叶斯平均或保序回归等方法进行学习。
 
 
-https://aitechtogether.com/article/28062.html
-
-
-
 1. 先验校准：
 
    - 数据增强 
 
-     - mixup:https://blog.csdn.net/ouyangfushu/article/details/87866579
+     - [MixUp](https://blog.csdn.net/ouyangfushu/article/details/87866579)
 
-       ![img](https://img-blog.csdnimg.cn/20190221185118987.png)
+     - [EDA代码](https://github.com/zhanlaoban/EDA_NLP_for_Chinese/blob/master/code/eda.py)
 
-     - EDA代码: https://github.com/zhanlaoban/EDA_NLP_for_Chinese/blob/master/code/eda.py
-
-     - 标签平滑（Label Smooth）：https://blog.csdn.net/weixin_44441131/article/details/106436808
-
-       ​	MLE（Max likehood estimation）在 in-domain 表现得更好，LS 在 out-of-domain 表现得更好
+     - [标签平滑（Label Smooth）](https://blog.csdn.net/weixin_44441131/article/details/106436808)
+      MLE（Max likehood estimation）在 in-domain 表现得更好，LS 在 out-of-domain 表现得更好
 
    - few shot
 
@@ -210,17 +203,17 @@ https://aitechtogether.com/article/28062.html
 
      不良校准与负对数似然 (NLL) 的过度拟合有关
 
-     - dice 损失代码：https://blog.csdn.net/hqllqh/article/details/112056385
+     - [dice 损失代码](https://blog.csdn.net/hqllqh/article/details/112056385)
 
-     - LogitNorm 交叉熵损失：https://arxiv.org/abs/2205.09310
+     - [LogitNorm 交叉熵损失](https://arxiv.org/abs/2205.09310)
 
        对传统交叉熵的改进，主要解决神经网络过拟合和模型矫正问题。虽然实验都是在 OOD 检测任务上做的，但是这个方法应该是具有比较强的通用性的，适用于一些需要知识迁移的任务。本文通过理论推导结合实验分析的方式，逐步引出方法，这个行文思路值得借鉴
 
-     - [On/Off-manifold regularization](On/Off-manifold regularization) 损失函数上加正则项
+     - On/Off-manifold regularization 损失函数上加正则项
 
-     - Distance-based logits & One vs ALL: https://arxiv.org/abs/2007.05134
+     - [Distance-based logits & One vs ALL](https://arxiv.org/abs/2007.05134)
 
-     DM:  logits zj 被定义为嵌入和最后c一层的权重之间的负欧氏距离，即 zj = − kf θ(x) − wjk
+     DM:  logits zj 被定义为嵌入和最后c一层的权重之间的负欧氏距离，即 $$zj = − kf θ(x) − wjk$$
 
      ![image-20230725170352955](https://haoming2003.oss-cn-hangzhou.aliyuncs.com/img/image-20230725170352955.png)
 
@@ -234,7 +227,7 @@ https://aitechtogether.com/article/28062.html
      >
      >[平滑算法](https://www.cnblogs.com/liweikuan/p/14253867.html)在transformer中softmax改进的应用：
      >
-     >$W_{i,j} = \frac{\exp(\text{score}(q_i, k_j))}{\sum_{j=1}^{m} \exp(\text{score}(q_i, k_j)) + \exp(\text{extra_logit})}$
+     >$$W_{i,j} = \frac{\exp(\text{score}(q_i, k_j))}{\sum_{j=1}^{m} \exp(\text{score}(q_i, k_j)) + \exp(\text{extra_logit})}$$
 
      插眼：半监督、伪标签、熵正则化
 
@@ -379,10 +372,10 @@ https://aitechtogether.com/article/28062.html
         补充：**KL 散度**（Kullback–Leibler divergence，缩写 KLD）是一种统计学度量，表示的是一个概率分布相对于另一个概率分布的差异程度，在信息论中又称为 **相对熵**（Relative entropy）。
 
         ​	设离散概率空间 X 上有两个概率分布 P 和 Q, 那么 P 相对于 Q 的 KL 散度定义如下：
-        ​			$D_{K L}(P \| Q)=\sum_{x \in X} P(x) \ln \left(\frac{P(x)}{Q(x)}\right)=\sum_{x \in X} P(x)(\ln (P(x))-\ln (Q(x))) \text {. }$
+        ​			$$D_{K L}(P \| Q)=\sum_{x \in X} P(x) \ln \left(\frac{P(x)}{Q(x)}\right)=\sum_{x \in X} P(x)(\ln (P(x))-\ln (Q(x))) \text {. }$$
         ​	对于连续型随机变量，设概率空间 X 上有两个概率分布 P 和 Q, 其概率密度分别为 p 和 q, 那么，P 相对于 Q 的 KL 散度定义如下：
 
-        ​			$D_{K L}(P \| Q)=\int_{-\infty}^{+\infty} p(x) \ln \left(\frac{p(x)}{q(x)}\right) d x$
+        ​			$$D_{K L}(P \| Q)=\int_{-\infty}^{+\infty} p(x) \ln \left(\frac{p(x)}{q(x)}\right) d x$$
 
         ​	显然，当 P = Q 时，DKL = 0。
         ​	根据 KL 散度的定义，可以知道此度量是没有对称性的。也就是说，P 相对于 Q 和 KL 散度一般并不等于 Q 相对
@@ -413,7 +406,7 @@ https://aitechtogether.com/article/28062.html
 
   在自然语言处理（NLP）中，二进制交叉熵（BCE）损失常用于多标签文本分类（Bengio et al., 2013）。给定一个包含N个训练实例的数据集，每个实例具有一个多标签的真实标签（其中C是类别的数量），以及分类器的输出概率P(y_i)，BCE损失可以定义如下（为简单起见，平均减少步骤未显示出来）：
 
-  $BCE = -1/N * Σ [Σ (y_i * log(P(y_i)) + (1 - y_i) * log(1 - P(y_i)))]$
+  $$BCE = -1/N * Σ [Σ (y_i * log(P(y_i)) + (1 - y_i) * log(1 - P(y_i)))]$$
 
      通常情况下，纯粹的BCE损失函数容易受到头部类别或负实例的支配而产生标签不平衡的问题（Durand et al., 2019）。以下，我们描述了三种解决多标签文本分类中长尾数据集类别不平衡问题的替代方法。这些平衡方法的主要思想是重新加权BCE，以便罕见的实例-标签组合能够直观地获得合理的“关注”。
        
