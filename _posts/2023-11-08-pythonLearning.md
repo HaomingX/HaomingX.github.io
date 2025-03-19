@@ -1,30 +1,12 @@
 ---
 title: 'Pyhon Learning'
-date: 2015-08-14
+date: 2023-11-08
 permalink: /posts/2023/11/pyhonLearning/
 tags:
   - Pyhon
 ---
 
----
-title: python小知识点
-author: haomingx
-avatar: /images/favicon.png
-authorDesc: 不断折腾
-comments: true
-date: 2023-01-04 11:26:21
-authorLink:
-authorAbout:
-categories:
-series:
-tags: python小知识
-keywords:
-description:
-photos:
-
----
-
-###python小知识点
+### python小知识点
 
 #### 可变类型拷贝
 
