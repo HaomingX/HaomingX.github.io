@@ -9,8 +9,8 @@ redirect_from:
 
 # Education
 
-- **Bachelor of Computer Science [School of future technology]**  
+- **Bachelor of Computer Science**  
   Harbin Institute of Technology, 2021 - 2025
 
-- **Master's in Software Engineering**  
+- **Master of Software Engineering**  
   Zhejiang University, 2025 - 2028
