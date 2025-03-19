@@ -1,7 +1,7 @@
 ---
 title: 'Position Embedding'
 date: 2023-07-08
-permalink: /posts/PositionEmbedding
+permalink: /posts/2023/07/PositionEmbedding
 tags:
   - Transformer
   - Position Embedding
