@@ -9,10 +9,13 @@
 
 main:
   - title: "Publications"
-    url: /publications/
+    url: /#publications
 
-  - title: "Portfolio"
-    url: /portfolio/
+  - title: "Projects"
+    url: /#projects
+
+  - title: "Internships"
+    url: /#internships
         
   - title: "Blog Posts"
     url: /year-archive/
