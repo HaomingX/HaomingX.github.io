@@ -23,73 +23,219 @@ If you are interested in my work, please contact me at **haomingxu2003@gmail.com
 
 *You can find my publications on [Google Scholar](https://scholar.google.com.hk/citations?user=I_sHcmgAAAAJ&hl=zh-CN).*
 
-### 2026
+<div class="publication-year">2026</div>
 
-**Illusions of Confidence? Diagnosing LLM Truthfulness via Neighborhood Consistency**  
-**Haoming Xu**, Ningyuan Zhao, Yunzhi Yao, Weihong Xu, Hongru Wang, Xinle Deng, Shumin Deng, Jeff Z. Pan, Huajun Chen, Ningyu Zhang  
-*arXiv preprint arXiv:2601.05905 (2026)*  
-[[Paper]](https://arxiv.org/abs/2601.05905) [[Code]](https://github.com/zjunlp/belief)
+<div class="publication-card">
+  <div class="card-content">
+    <div class="card-body">
+      <div class="card-title">Illusions of Confidence? Diagnosing LLM Truthfulness via Neighborhood Consistency</div>
+      <div class="card-badges">
+        <span class="badge badge-arxiv">arXiv 2026</span>
+        <span class="badge badge-code">Code</span>
+      </div>
+      <div class="card-authors"><strong>Haoming Xu</strong>, Ningyuan Zhao, Yunzhi Yao, Weihong Xu, Hongru Wang, Xinle Deng, Shumin Deng, Jeff Z. Pan, Huajun Chen, Ningyu Zhang</div>
+      <div class="card-description">We propose a novel framework for diagnosing LLM truthfulness via neighborhood consistency analysis.</div>
+      <div class="card-links">
+        <a href="https://arxiv.org/abs/2601.05905">Paper</a>
+        <a href="https://github.com/zjunlp/belief">Code</a>
+      </div>
+    </div>
+  </div>
+</div>
 
-### 2025
+<div class="publication-year">2025</div>
 
-**Rethinking Knowledge Editing in Reasoning Era**  
-Yunzhi Yao, Jiaxin Qin, Ningyu Zhang, **Haoming Xu**, Yuqi Zhu, Zeping Yu, Mengru Wang, Yuqi Tang, Jia-Chen Gu, Shumin Deng, Nanyun Peng, Huajun Chen  
-*Authorea Preprints 2025*  
-[[Paper]](https://www.authorea.com/users/812306/articles/1234567-rethinking-knowledge-editing-in-reasoning-era)
+<div class="publication-card">
+  <div class="card-content">
+    <div class="card-body">
+      <div class="card-title">Rethinking Knowledge Editing in Reasoning Era</div>
+      <div class="card-badges">
+        <span class="badge badge-conference">Authorea 2025</span>
+      </div>
+      <div class="card-authors">Yunzhi Yao, Jiaxin Qin, Ningyu Zhang, <strong>Haoming Xu</strong>, Yuqi Zhu, Zeping Yu, Mengru Wang, Yuqi Tang, Jia-Chen Gu, Shumin Deng, Nanyun Peng, Huajun Chen</div>
+      <div class="card-description">Revisiting knowledge editing methods for large language models in the reasoning era.</div>
+      <div class="card-links">
+        <a href="https://www.authorea.com/users/812306/articles/1234567-rethinking-knowledge-editing-in-reasoning-era">Paper</a>
+      </div>
+    </div>
+  </div>
+</div>
 
-**LightMem: Lightweight and Efficient Memory-Augmented Generation**  
-Jizhan Fang, Xinle Deng, **Haoming Xu**, Ziyan Jiang, Yuqi Tang, Ziwen Xu, Shumin Deng, Yunzhi Yao, Mengru Wang, Shuofei Qiao, Huajun Chen, Ningyu Zhang  
-*arXiv preprint arXiv:2510.18866 (2025)*  
-[[Paper]](https://arxiv.org/abs/2510.18866) [[Code]](https://github.com/zjunlp/LightMem)
+<div class="publication-card">
+  <div class="card-content">
+    <div class="card-body">
+      <div class="card-title">LightMem: Lightweight and Efficient Memory-Augmented Generation</div>
+      <div class="card-badges">
+        <span class="badge badge-arxiv">arXiv 2025</span>
+        <span class="badge badge-code">Code</span>
+      </div>
+      <div class="card-authors">Jizhan Fang, Xinle Deng, <strong>Haoming Xu</strong>, Ziyan Jiang, Yuqi Tang, Ziwen Xu, Shumin Deng, Yunzhi Yao, Mengru Wang, Shuofei Qiao, Huajun Chen, Ningyu Zhang</div>
+      <div class="card-description">A lightweight and efficient memory-augmented generation framework for large language models.</div>
+      <div class="card-links">
+        <a href="https://arxiv.org/abs/2510.18866">Paper</a>
+        <a href="https://github.com/zjunlp/LightMem">Code</a>
+      </div>
+    </div>
+  </div>
+</div>
 
-**EasyEdit2: An Easy-to-use Steering Framework for Editing Large Language Models**  
-Ziwen Xu, Shuxun Wang, Kewei Xu, **Haoming Xu**, Mengru Wang, Xinle Deng, Yunzhi Yao, Guozhou Zheng, Huajun Chen, Ningyu Zhang  
-*arXiv preprint arXiv:2504.15133 (2025)*  
-[[Paper]](https://arxiv.org/abs/2504.15133) [[Code]](https://github.com/zjunlp/EasyEdit)
+<div class="publication-card">
+  <div class="card-content">
+    <div class="card-body">
+      <div class="card-title">EasyEdit2: An Easy-to-use Steering Framework for Editing Large Language Models</div>
+      <div class="card-badges">
+        <span class="badge badge-arxiv">arXiv 2025</span>
+        <span class="badge badge-code">Code</span>
+      </div>
+      <div class="card-authors">Ziwen Xu, Shuxun Wang, Kewei Xu, <strong>Haoming Xu</strong>, Mengru Wang, Xinle Deng, Yunzhi Yao, Guozhou Zheng, Huajun Chen, Ningyu Zhang</div>
+      <div class="card-description">An easy-to-use steering framework for editing large language models with improved performance.</div>
+      <div class="card-links">
+        <a href="https://arxiv.org/abs/2504.15133">Paper</a>
+        <a href="https://github.com/zjunlp/EasyEdit">Code</a>
+      </div>
+    </div>
+  </div>
+</div>
 
-**ZJUKLAB at SemEval-2025 Task 4: Unlearning via Model Merging**  
-**Haoming Xu**, Shuxun Wang, Yanqiu Zhao, Yi Zhong, Ziyan Jiang, Ningyuan Zhao, Shumin Deng, Huajun Chen, Ningyu Zhang  
-*arXiv preprint arXiv:2503.21088 (2025)*  
-[[Paper]](https://arxiv.org/abs/2503.21088) [[Code]](https://github.com/zjunlp/unlearn/tree/main/semeval25)
+<div class="publication-card">
+  <div class="card-content">
+    <div class="card-body">
+      <div class="card-title">ZJUKLAB at SemEval-2025 Task 4: Unlearning via Model Merging</div>
+      <div class="card-badges">
+        <span class="badge badge-conference">SemEval 2025</span>
+        <span class="badge badge-code">Code</span>
+      </div>
+      <div class="card-authors"><strong>Haoming Xu</strong>, Shuxun Wang, Yanqiu Zhao, Yi Zhong, Ziyan Jiang, Ningyuan Zhao, Shumin Deng, Huajun Chen, Ningyu Zhang</div>
+      <div class="card-description">We propose an unlearning approach via model merging for SemEval-2025 Task 4.</div>
+      <div class="card-links">
+        <a href="https://arxiv.org/abs/2503.21088">Paper</a>
+        <a href="https://github.com/zjunlp/unlearn/tree/main/semeval25">Code</a>
+      </div>
+    </div>
+  </div>
+</div>
 
-**Relearn: Unlearning via Learning for Large Language Models**  
-**Haoming Xu**, Ningyuan Zhao, Liming Yang, Sendong Zhao, Shumin Deng, Mengru Wang, Bryan Hooi, Nay Oo, Huajun Chen, Ningyu Zhang  
-*arXiv preprint arXiv:2502.11190 (2025)*  
-[[Paper]](https://arxiv.org/abs/2502.11190) [[Code]](https://github.com/zjunlp/unlearn)
+<div class="publication-card">
+  <div class="card-content">
+    <div class="card-body">
+      <div class="card-title">Relearn: Unlearning via Learning for Large Language Models</div>
+      <div class="card-badges">
+        <span class="badge badge-arxiv">arXiv 2025</span>
+        <span class="badge badge-code">Code</span>
+      </div>
+      <div class="card-authors"><strong>Haoming Xu</strong>, Ningyuan Zhao, Liming Yang, Sendong Zhao, Shumin Deng, Mengru Wang, Bryan Hooi, Nay Oo, Huajun Chen, Ningyu Zhang</div>
+      <div class="card-description">A novel framework for machine unlearning in large language models through a learning-based approach.</div>
+      <div class="card-links">
+        <a href="https://arxiv.org/abs/2502.11190">Paper</a>
+        <a href="https://github.com/zjunlp/unlearn">Code</a>
+      </div>
+    </div>
+  </div>
+</div>
 
-### 2024
+<div class="publication-year">2024</div>
 
-**MLLM Can See? Dynamic Correction Decoding for Hallucination Mitigation**  
-Chenxi Wang, Xiang Chen, Ningyu Zhang, Bozhong Tian, **Haoming Xu**, Shumin Deng, Huajun Chen  
-*arXiv preprint arXiv:2410.11779 (2024)*  
-[[Paper]](https://arxiv.org/abs/2410.11779) [[Code]](https://github.com/zjunlp/DeCo)
+<div class="publication-card">
+  <div class="card-content">
+    <div class="card-body">
+      <div class="card-title">MLLM Can See? Dynamic Correction Decoding for Hallucination Mitigation</div>
+      <div class="card-badges">
+        <span class="badge badge-arxiv">arXiv 2024</span>
+        <span class="badge badge-code">Code</span>
+      </div>
+      <div class="card-authors">Chenxi Wang, Xiang Chen, Ningyu Zhang, Bozhong Tian, <strong>Haoming Xu</strong>, Shumin Deng, Huajun Chen</div>
+      <div class="card-description">A dynamic correction decoding strategy for multimodal large language models to mitigate hallucinations.</div>
+      <div class="card-links">
+        <a href="https://arxiv.org/abs/2410.11779">Paper</a>
+        <a href="https://github.com/zjunlp/DeCo">Code</a>
+      </div>
+    </div>
+  </div>
+</div>
 
-**CMCOQA: A Chinese Medical Complex Open-Question Answering Benchmark**  
-**Zijian Li**, Sendong Zhao, Haochun Wang, **Haoming Xu**, Bing Qin, Ting Liu  
-*2024 IEEE International Conference on Bioinformatics and Biomedicine (BIBM 2024)*  
-[[Paper]](https://ieeexplore.ieee.org/document/10599305)
+<div class="publication-card">
+  <div class="card-content">
+    <div class="card-body">
+      <div class="card-title">CMCOQA: A Chinese Medical Complex Open-Question Answering Benchmark</div>
+      <div class="card-badges">
+        <span class="badge badge-conference">BIBM 2024</span>
+      </div>
+      <div class="card-authors"><strong>Zijian Li</strong>, Sendong Zhao, Haochun Wang, <strong>Haoming Xu</strong>, Bing Qin, Ting Liu</div>
+      <div class="card-description">A comprehensive benchmark for Chinese medical complex open-question answering systems.</div>
+      <div class="card-links">
+        <a href="https://ieeexplore.ieee.org/document/10599305">Paper</a>
+      </div>
+    </div>
+  </div>
+</div>
 
-### 2023
+<div class="publication-year">2023</div>
 
-**Knowledge-Tuning Large Language Models with Structured Medical Knowledge Bases for Reliable Response Generation in Chinese**  
-Haochun Wang, Sendong Zhao, Zewen Qiang, Zijian Li, Nuwa Xi, Yanrui Du, MuZhen Cai, Haoqiang Guo, Yuhan Chen, **Haoming Xu**, Bing Qin, Ting Liu  
-*arXiv preprint arXiv:2309.04175 (2023)*  
-[[Paper]](https://arxiv.org/abs/2309.04175)
+<div class="publication-card">
+  <div class="card-content">
+    <div class="card-body">
+      <div class="card-title">Knowledge-Tuning Large Language Models with Structured Medical Knowledge Bases for Reliable Response Generation in Chinese</div>
+      <div class="card-badges">
+        <span class="badge badge-arxiv">arXiv 2023</span>
+      </div>
+      <div class="card-authors">Haochun Wang, Sendong Zhao, Zewen Qiang, Zijian Li, Nuwa Xi, Yanrui Du, MuZhen Cai, Haoqiang Guo, Yuhan Chen, <strong>Haoming Xu</strong>, Bing Qin, Ting Liu</div>
+      <div class="card-description">Integrating structured medical knowledge bases to improve reliable response generation in Chinese medical QA systems.</div>
+      <div class="card-links">
+        <a href="https://arxiv.org/abs/2309.04175">Paper</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 ---
 
 ## 🚀 Projects {#projects}
-**EasyEdit2: An Easy-to-use Steering Framework for Editing Large Language Models**  
-*An easy-to-use steering framework for large language models.*  
-[[GitHub]](https://github.com/zjunlp/EasyEdit/blob/main/README_2.md)
 
-**EasyEdit: An Easy-to-use Knowledge Editing Framework for LLMs**  
-*An easy-to-use knowledge editing framework for large language models. Supports multiple editing methods including ROME, MEMIT, MEND, and more.*  
-[[GitHub]](https://github.com/zjunlp/EasyEdit)
+<div class="project-card">
+  <div class="card-content">
+    <div class="card-body">
+      <div class="card-title">EasyEdit2: An Easy-to-use Steering Framework for Editing Large Language Models</div>
+      <div class="card-badges">
+        <span class="badge badge-code">Framework</span>
+      </div>
+      <div class="card-description">An easy-to-use steering framework for large language models with improved editing capabilities and user experience.</div>
+      <div class="card-links">
+        <a href="https://github.com/zjunlp/EasyEdit/blob/main/README_2.md">GitHub</a>
+      </div>
+    </div>
+  </div>
+</div>
 
-**LightMem: Lightweight and Efficient Memory-Augmented Generation**  
-*Lightweight and efficient memory-augmented generation framework for large language models.*  
-[[GitHub]](https://github.com/zjunlp/LightMem) [[Paper]](https://arxiv.org/abs/2510.18866)
+<div class="project-card">
+  <div class="card-content">
+    <div class="card-body">
+      <div class="card-title">EasyEdit: An Easy-to-use Knowledge Editing Framework for LLMs</div>
+      <div class="card-badges">
+        <span class="badge badge-code">Framework</span>
+      </div>
+      <div class="card-description">An easy-to-use knowledge editing framework for large language models. Supports multiple editing methods including ROME, MEMIT, MEND, and more.</div>
+      <div class="card-links">
+        <a href="https://github.com/zjunlp/EasyEdit">GitHub</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="project-card">
+  <div class="card-content">
+    <div class="card-body">
+      <div class="card-title">LightMem: Lightweight and Efficient Memory-Augmented Generation</div>
+      <div class="card-badges">
+        <span class="badge badge-code">Framework</span>
+      </div>
+      <div class="card-description">Lightweight and efficient memory-augmented generation framework for large language models.</div>
+      <div class="card-links">
+        <a href="https://github.com/zjunlp/LightMem">GitHub</a>
+        <a href="https://arxiv.org/abs/2510.18866">Paper</a>
+      </div>
+    </div>
+  </div>
+</div>
 
 ---
 
@@ -99,7 +245,7 @@ Haochun Wang, Sendong Zhao, Zewen Qiang, Zijian Li, Nuwa Xi, Yanrui Du, MuZhen C
 Zhejiang University, 2025 - present
 
 **Bachelor of Computer Science**  
-Harbin Institute of Technology, 2021 - 2025
+  Harbin Institute of Technology, 2021 - 2025
 
 ---
 
