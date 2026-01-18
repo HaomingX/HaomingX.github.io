@@ -26,7 +26,7 @@ If you are interested in my work, please contact me at **haomingxu2003@gmail.com
 ### 2026
 
 **Illusions of Confidence? Diagnosing LLM Truthfulness via Neighborhood Consistency**  
-Haoming Xu, Ningyuan Zhao, Yunzhi Yao, Weihong Xu, Hongru Wang, Xinle Deng, Shumin Deng, Jeff Z. Pan, Huajun Chen, Ningyu Zhang  
+**Haoming Xu**, Ningyuan Zhao, Yunzhi Yao, Weihong Xu, Hongru Wang, Xinle Deng, Shumin Deng, Jeff Z. Pan, Huajun Chen, Ningyu Zhang  
 *arXiv preprint arXiv:2601.05905 (2026)*  
 [[Paper]](https://arxiv.org/abs/2601.05905) [[Code]](https://github.com/zjunlp/belief)
 
@@ -50,24 +50,24 @@ Ziwen Xu, Shuxun Wang, Kewei Xu, **Haoming Xu**, Mengru Wang, Xinle Deng, Yunzhi
 **ZJUKLAB at SemEval-2025 Task 4: Unlearning via Model Merging**  
 **Haoming Xu**, Shuxun Wang, Yanqiu Zhao, Yi Zhong, Ziyan Jiang, Ningyuan Zhao, Shumin Deng, Huajun Chen, Ningyu Zhang  
 *arXiv preprint arXiv:2503.21088 (2025)*  
-[[Paper]](https://arxiv.org/abs/2503.21088)
+[[Paper]](https://arxiv.org/abs/2503.21088) [[Code]](https://github.com/zjunlp/unlearn/tree/main/semeval25)
 
 **Relearn: Unlearning via Learning for Large Language Models**  
 **Haoming Xu**, Ningyuan Zhao, Liming Yang, Sendong Zhao, Shumin Deng, Mengru Wang, Bryan Hooi, Nay Oo, Huajun Chen, Ningyu Zhang  
 *arXiv preprint arXiv:2502.11190 (2025)*  
-[[Paper]](https://arxiv.org/abs/2502.11190)
+[[Paper]](https://arxiv.org/abs/2502.11190) [[Code]](https://github.com/zjunlp/unlearn)
 
 ### 2024
 
 **MLLM Can See? Dynamic Correction Decoding for Hallucination Mitigation**  
 Chenxi Wang, Xiang Chen, Ningyu Zhang, Bozhong Tian, **Haoming Xu**, Shumin Deng, Huajun Chen  
 *arXiv preprint arXiv:2410.11779 (2024)*  
-[[Paper]](https://arxiv.org/abs/2410.11779)
+[[Paper]](https://arxiv.org/abs/2410.11779) [[Code]](https://github.com/zjunlp/DeCo)
 
 **CMCOQA: A Chinese Medical Complex Open-Question Answering Benchmark**  
 **Zijian Li**, Sendong Zhao, Haochun Wang, **Haoming Xu**, Bing Qin, Ting Liu  
 *2024 IEEE International Conference on Bioinformatics and Biomedicine (BIBM 2024)*  
-[[Paper]](https://ieeexplore.ieee.org/document/10599305) [[arXiv]](https://arxiv.org/abs/2412.00000)
+[[Paper]](https://ieeexplore.ieee.org/document/10599305)
 
 ### 2023
 
@@ -79,10 +79,13 @@ Haochun Wang, Sendong Zhao, Zewen Qiang, Zijian Li, Nuwa Xi, Yanrui Du, MuZhen C
 ---
 
 ## 🚀 Projects {#projects}
+**EasyEdit2: An Easy-to-use Steering Framework for Editing Large Language Models**  
+*An easy-to-use steering framework for large language models.*  
+[[GitHub]](https://github.com/zjunlp/EasyEdit/blob/main/README_2.md)
 
 **EasyEdit: An Easy-to-use Knowledge Editing Framework for LLMs**  
 *An easy-to-use knowledge editing framework for large language models. Supports multiple editing methods including ROME, MEMIT, MEND, and more.*  
-[[GitHub]](https://github.com/zjunlp/EasyEdit) [[Documentation]](https://github.com/zjunlp/EasyEdit/blob/main/README_2.md)
+[[GitHub]](https://github.com/zjunlp/EasyEdit)
 
 **LightMem: Lightweight and Efficient Memory-Augmented Generation**  
 *Lightweight and efficient memory-augmented generation framework for large language models.*  
