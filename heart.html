@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大爱心与动态效果</title>
+    <!-- 使用 Tailwind CSS 进行快速布局 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@700&display=swap');
+
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: radial-gradient(circle at center, #fff5f7 0%, #ffd1dc 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Zen Maru Gothic', 'Hiragino Kaku Gothic Pro', sans-serif;
+            touch-action: manipulation;
+        }
+
+        /* 主爱心容器 */
+        .heart-wrapper {
+            position: relative;
+            z-index: 10;
+            cursor: pointer;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .heart-wrapper:active {
+            transform: scale(0.9);
+        }
+
+        /* 绘制大爱心 (SVG 更加清晰且易于缩放) */
+        .main-heart {
+            width: 450px;
+            height: 450px;
+            fill: #ff3366;
+            filter: drop-shadow(0 0 30px rgba(255, 51, 102, 0.6));
+            animation: heartBeat 0.8s infinite alternate cubic-bezier(0.45, 0.05, 0.55, 0.95);
+        }
+
+        @keyframes heartBeat {
+            0% { 
+                transform: scale(1);
+                filter: drop-shadow(0 0 20px rgba(255, 51, 102, 0.4));
+            }
+            100% { 
+                transform: scale(1.15);
+                filter: drop-shadow(0 0 50px rgba(255, 51, 102, 0.8));
+            }
+        }
+
+        /* 居中文字样式 */
+        .message-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            pointer-events: none;
+            text-align: center;
+        }
+
+        .message-text {
+            color: white;
+            font-size: 3.5rem;
+            font-weight: 800;
+            white-space: nowrap;
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2),
+                         0 0 20px rgba(255, 255, 255, 0.5);
+            animation: textGlow 2s infinite ease-in-out;
+        }
+
+        @keyframes textGlow {
+            0%, 100% { opacity: 0.9; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+
+        /* 漂浮的小物体 */
+        .particle {
+            position: absolute;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* 旋转动画 */
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* 交互反馈的小心心 */
+        .burst-heart {
+            position: absolute;
+            pointer-events: none;
+            animation: burstOut 0.8s forwards ease-out;
+        }
+
+        @keyframes burstOut {
+            0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+            100% { transform: translate(var(--tw-x), var(--tw-y)) scale(var(--tw-s)) rotate(var(--tw-r)); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="heart-wrapper" id="heartWrapper">
+        <svg class="main-heart" viewBox="0 0 32 32">
+            <path d="M16 28.5L14.1 26.7C7.35 20.55 3 16.5 3 11.5C3 7.35 6.25 4.1 10.4 4.1C12.75 4.1 14.95 5.2 16 6.95C17.05 5.2 19.25 4.1 21.6 4.1C25.75 4.1 29 7.35 29 11.5C29 16.5 24.65 20.55 17.9 26.75L16 28.5Z" />
+        </svg>
+        <div class="message-container">
+            <div class="message-text">私はカキが<br>大好きです</div>
+        </div>
+    </div>
+
+    <script>
+        const colors = ['#ff4d6d', '#ff758f', '#ff8fa3', '#ffb3c1', '#fb6f92'];
+        const shapes = ['❤️', '✨', '🌸', '💖', '💗'];
+
+        // 创建背景漂浮物
+        function createParticle() {
+            const particle = document.createElement('div');
+            const isHeart = Math.random() > 0.5;
+            
+            particle.className = 'particle';
+            particle.textContent = shapes[Math.floor(Math.random() * shapes.length)];
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.top = '110vh';
+            particle.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            
+            const duration = Math.random() * 5 + 5;
+            particle.style.animation = `floatUp ${duration}s linear infinite`;
+            particle.style.opacity = Math.random();
+            
+            document.body.appendChild(particle);
+
+            // 定时移除，防止内存泄漏
+            setTimeout(() => {
+                particle.remove();
+            }, duration * 1000);
+        }
+
+        // 初始化背景粒子
+        for(let i = 0; i < 30; i++) {
+            setTimeout(createParticle, Math.random() * 5000);
+        }
+        setInterval(createParticle, 400);
+
+        // 交互：点击产生爆炸爱心效果
+        function spawnBurst(e) {
+            const x = e.clientX || e.touches[0].clientX;
+            const y = e.clientY || e.touches[0].clientY;
+
+            for (let i = 0; i < 12; i++) {
+                const b = document.createElement('div');
+                b.className = 'burst-heart';
+                b.textContent = '❤️';
+                b.style.left = x + 'px';
+                b.style.top = y + 'px';
+                b.style.color = colors[Math.floor(Math.random() * colors.length)];
+                b.style.fontSize = (Math.random() * 20 + 20) + 'px';
+                
+                // 设置随机爆炸方向和缩放
+                const angle = Math.random() * Math.PI * 2;
+                const dist = Math.random() * 150 + 50;
+                b.style.setProperty('--tw-x', `${Math.cos(angle) * dist}px`);
+                b.style.setProperty('--tw-y', `${Math.sin(angle) * dist}px`);
+                b.style.setProperty('--tw-r', `${Math.random() * 360}deg`);
+                b.style.setProperty('--tw-s', `${Math.random() * 1.5 + 0.5}`);
+
+                document.body.appendChild(b);
+                setTimeout(() => b.remove(), 800);
+            }
+        }
+
+        window.addEventListener('mousedown', spawnBurst);
+        window.addEventListener('touchstart', spawnBurst);
+
+        // 让主爱心可以跟随鼠标微动，增加动感
+        document.addEventListener('mousemove', (e) => {
+            const wrapper = document.getElementById('heartWrapper');
+            const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+            const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+            wrapper.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+        });
+    </script>
+</body>
+</html>
