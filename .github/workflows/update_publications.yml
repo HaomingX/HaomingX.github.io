@@ -30,7 +30,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install --upgrade pip
-          pip install scholarly requests beautifulsoup4 lxml
+          pip install requests
 
       # ── 4. Run updater ───────────────────────────────────────────────────────
       - name: Fetch & update publications

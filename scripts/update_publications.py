@@ -1,106 +1,120 @@
 #!/usr/bin/env python3
 """
-Fetch publications from Google Scholar and update _pages/about.md.
+Fetch publications from Semantic Scholar and update _pages/about.md.
 
-- Only adds papers not already present (matched by title).
+Semantic Scholar has a free public API that doesn't require scraping or proxies.
+It is robust from CI/CD environments like GitHub Actions.
+
+- Disambiguates your author profile by matching known paper titles.
+- Only adds papers not already present (matched by title, case-insensitive).
 - Preserves all existing content; inserts new cards grouped by year.
-- Newly added cards are marked with an HTML comment so they can be reviewed.
+- Newly added cards are marked with <!-- AUTO-ADDED --> for review.
 """
 
 import re
 import sys
 import time
+import requests
 
-SCHOLAR_USER_ID = "I_sHcmgAAAAJ"
-MY_NAME = "Haoming Xu"
+# ── Config ────────────────────────────────────────────────────────────────────
+MY_NAME   = "Haoming Xu"
 ABOUT_FILE = "_pages/about.md"
+
+# Semantic Scholar API base
+SS_API = "https://api.semanticscholar.org/graph/v1"
+
+# One or more distinctive title fragments from your known papers.
+# Used to pick the right "Haoming Xu" from search results.
+KNOWN_TITLE_FRAGMENTS = [
+    "Relearn",
+    "MLLM Can See",
+    "ZJUKLAB",
+    "Illusions of Confidence",
+]
+
+# Optional: set env var SEMANTIC_SCHOLAR_API_KEY for higher rate limits (free key).
+import os
+SS_HEADERS = {}
+if os.environ.get("SEMANTIC_SCHOLAR_API_KEY"):
+    SS_HEADERS["x-api-key"] = os.environ["SEMANTIC_SCHOLAR_API_KEY"]
 
 # ── Boundary markers in about.md ─────────────────────────────────────────────
 PUB_START_MARKER = "## 📝 Publications {#publications}"
 PUB_END_MARKER   = "\n---\n\n## 🚀 Projects"
 
 
-# ── Scholar helpers ───────────────────────────────────────────────────────────
+# ── Semantic Scholar helpers ──────────────────────────────────────────────────
 
-def get_scholarly():
-    try:
-        from scholarly import scholarly as _s, ProxyGenerator
-        return _s, ProxyGenerator
-    except ImportError:
-        print("ERROR: 'scholarly' is not installed. Run: pip install scholarly")
-        sys.exit(1)
-
-
-def fetch_publications():
-    scholarly, ProxyGenerator = get_scholarly()
-
-    def _fetch(scholar):
-        author = scholar.search_author_id(SCHOLAR_USER_ID)
-        author = scholar.fill(author, sections=["publications"])
-        return author.get("publications", [])
-
-    # 1. Try direct access
-    try:
-        print("Trying direct Google Scholar access …")
-        pubs = _fetch(scholarly)
-        print(f"Direct access succeeded: {len(pubs)} publications found.")
-        return pubs
-    except Exception as e:
-        print(f"Direct access failed: {e}")
-
-    # 2. Fall back to free rotating proxies
-    try:
-        print("Trying with FreeProxies …")
-        pg = ProxyGenerator()
-        pg.FreeProxies()
-        scholarly.use_proxy(pg)
-        pubs = _fetch(scholarly)
-        print(f"FreeProxies succeeded: {len(pubs)} publications found.")
-        return pubs
-    except Exception as e:
-        print(f"FreeProxies also failed: {e}")
-        sys.exit(1)
+def _get(url, params=None, retries=3):
+    for attempt in range(retries):
+        try:
+            r = requests.get(url, params=params, headers=SS_HEADERS, timeout=30)
+            if r.status_code == 429:
+                wait = 10 * (attempt + 1)
+                print(f"  Rate-limited; waiting {wait}s …")
+                time.sleep(wait)
+                continue
+            r.raise_for_status()
+            return r.json()
+        except requests.RequestException as e:
+            if attempt == retries - 1:
+                raise
+            print(f"  Request error ({e}), retrying …")
+            time.sleep(3)
 
 
-def fill_pub(scholarly_module, pub):
-    """Fill publication details (abstract, url, etc.). Fails silently."""
-    try:
-        return scholarly_module.fill(pub)
-    except Exception as e:
-        print(f"  Warning: could not fill details: {e}")
-        return pub
-
-
-# ── Name / author helpers ─────────────────────────────────────────────────────
-
-def _normalize_name(raw: str) -> str:
-    """Convert 'Last, First' or 'First Last' → 'First Last'."""
-    raw = raw.strip()
-    if "," in raw:
-        parts = [p.strip() for p in raw.split(",", 1)]
-        return f"{parts[1]} {parts[0]}"
-    return raw
-
-
-def format_authors(author_field: str, my_name: str = MY_NAME) -> str:
+def find_author_id() -> str:
     """
-    scholarly stores authors as 'A and B and C' (BibTeX style).
-    Returns an HTML string with MY_NAME bolded.
+    Search Semantic Scholar for MY_NAME and return the authorId whose
+    paper list contains at least one KNOWN_TITLE_FRAGMENT.
     """
-    if not author_field:
-        return ""
-    raw_authors = [a.strip() for a in author_field.split(" and ")]
-    formatted = []
-    for raw in raw_authors:
-        name = _normalize_name(raw)
+    data = _get(
+        f"{SS_API}/author/search",
+        params={
+            "query": MY_NAME,
+            "fields": "authorId,name,papers.title",
+            "limit": 10,
+        },
+    )
+
+    for author in data.get("data", []):
+        papers = author.get("papers", [])
+        titles = " ".join(p.get("title", "") for p in papers).lower()
+        if any(frag.lower() in titles for frag in KNOWN_TITLE_FRAGMENTS):
+            print(f"Found author: {author['name']} (id={author['authorId']})")
+            return author["authorId"]
+
+    print("ERROR: Could not identify your Semantic Scholar author profile.")
+    print("Candidates found:")
+    for a in data.get("data", []):
+        print(f"  {a.get('name')} ({a.get('authorId')})")
+    sys.exit(1)
+
+
+def fetch_papers(author_id: str) -> list:
+    fields = (
+        "title,year,venue,authors,externalIds,"
+        "abstract,publicationVenue,openAccessPdf"
+    )
+    data = _get(
+        f"{SS_API}/author/{author_id}/papers",
+        params={"fields": fields, "limit": 100},
+    )
+    return data.get("data", [])
+
+
+# ── Author / card helpers ─────────────────────────────────────────────────────
+
+def format_authors(authors: list, my_name: str = MY_NAME) -> str:
+    parts = []
+    for a in authors:
+        name = a.get("name", "")
         if my_name.lower() in name.lower():
-            formatted.append(f"<strong>{name}</strong>")
+            parts.append(f"<strong>{name}</strong>")
         else:
-            formatted.append(name)
-    return ", ".join(formatted)
+            parts.append(name)
+    return ", ".join(parts)
 
-
-# ── Card builder ──────────────────────────────────────────────────────────────
 
 def _first_sentence(text: str, max_chars: int = 220) -> str:
     text = text.strip()
@@ -111,19 +125,32 @@ def _first_sentence(text: str, max_chars: int = 220) -> str:
     return snippet
 
 
-def make_card(pub: dict) -> str:
-    bib = pub.get("bib", {})
+def paper_url(paper: dict) -> str:
+    ext = paper.get("externalIds") or {}
+    if ext.get("ArXiv"):
+        return f"https://arxiv.org/abs/{ext['ArXiv']}"
+    if ext.get("DOI"):
+        return f"https://doi.org/{ext['DOI']}"
+    pdf = paper.get("openAccessPdf") or {}
+    if pdf.get("url"):
+        return pdf["url"]
+    return "#"
 
-    title   = bib.get("title", "Untitled").strip()
-    url     = pub.get("pub_url") or "#"
-    year    = str(bib.get("pub_year", "")).strip()
-    venue   = (bib.get("venue") or bib.get("journal") or
-               bib.get("booktitle") or "").strip()
-    authors = format_authors(bib.get("author", ""))
-    abstract = bib.get("abstract", "")
+
+def venue_string(paper: dict) -> str:
+    pv = paper.get("publicationVenue") or {}
+    name = pv.get("name") or paper.get("venue") or ""
+    year = paper.get("year") or ""
+    return f"{name} {year}".strip()
+
+
+def make_card(paper: dict) -> str:
+    title       = (paper.get("title") or "Untitled").strip()
+    url         = paper_url(paper)
+    authors_html = format_authors(paper.get("authors") or [])
+    venue_str   = venue_string(paper)
+    abstract    = paper.get("abstract") or ""
     description = _first_sentence(abstract) if abstract else "TODO: add description."
-
-    venue_str = f"{venue} {year}".strip()
 
     return (
         f'<!-- AUTO-ADDED: review and edit as needed -->\n'
@@ -138,7 +165,7 @@ def make_card(pub: dict) -> str:
         f'        </span>\n'
         f'        <span>{venue_str}</span>\n'
         f'      </div>\n'
-        f'      <div class="card-authors">{authors}</div>\n'
+        f'      <div class="card-authors">{authors_html}</div>\n'
         f'      <div class="card-description">{description}</div>\n'
         f'    </div>\n'
         f'  </div>\n'
@@ -149,7 +176,6 @@ def make_card(pub: dict) -> str:
 # ── about.md helpers ──────────────────────────────────────────────────────────
 
 def existing_titles(content: str) -> set:
-    """Return lower-cased set of all paper titles already in about.md."""
     pattern = r'class="card-title"><a [^>]+>([^<]+)</a></div>'
     return {t.lower().strip() for t in re.findall(pattern, content)}
 
@@ -159,18 +185,13 @@ def _pub_section_bounds(content: str):
     end   = content.find(PUB_END_MARKER, start)
     if start == -1 or end == -1:
         raise ValueError(
-            f"Could not locate publications section.\n"
-            f"Expected markers:\n  '{PUB_START_MARKER}'\n  '{PUB_END_MARKER}'"
+            "Could not locate publications section.\n"
+            f"Expected: '{PUB_START_MARKER}' … '{PUB_END_MARKER}'"
         )
-    # end points at the '\n' before '---'; keep that '\n---\n\n## 🚀 Projects'
     return start, end
 
 
-def insert_new_cards(content: str, new_by_year: dict) -> tuple[str, int]:
-    """
-    Insert new publication cards into the publication section of content.
-    Returns (updated_content, number_of_cards_added).
-    """
+def insert_new_cards(content: str, new_by_year: dict) -> tuple:
     if not new_by_year:
         return content, 0
 
@@ -183,12 +204,9 @@ def insert_new_cards(content: str, new_by_year: dict) -> tuple[str, int]:
         year_marker = f'<div class="publication-year">{year}</div>'
 
         if year_marker in section:
-            # Append cards just after the existing year marker
             pos = section.find(year_marker) + len(year_marker)
-            insert_block = "\n\n" + "\n\n".join(cards)
-            section = section[:pos] + insert_block + section[pos:]
+            section = section[:pos] + "\n\n" + "\n\n".join(cards) + section[pos:]
         else:
-            # Find the first existing year-marker that is older (smaller year)
             existing_years = [
                 (int(m.group(1)), m.start())
                 for m in re.finditer(
@@ -200,7 +218,7 @@ def insert_new_cards(content: str, new_by_year: dict) -> tuple[str, int]:
                 if ey < int(year):
                     insert_before = epos
                     break
-                # All existing years are newer → append at the bottom of section
+
             year_block = year_marker + "\n\n" + "\n\n".join(cards) + "\n"
             if insert_before is not None:
                 section = (
@@ -219,12 +237,12 @@ def insert_new_cards(content: str, new_by_year: dict) -> tuple[str, int]:
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 def main():
-    scholarly_module, _ = get_scholarly()
-    from scholarly import scholarly
+    print("Finding author on Semantic Scholar …")
+    author_id = find_author_id()
 
-    print("Fetching publications from Google Scholar …")
-    publications = fetch_publications()
-    print(f"{len(publications)} publications retrieved.")
+    print("Fetching papers …")
+    papers = fetch_papers(author_id)
+    print(f"{len(papers)} papers retrieved.")
 
     with open(ABOUT_FILE, encoding="utf-8") as f:
         content = f.read()
@@ -232,22 +250,18 @@ def main():
     known = existing_titles(content)
     print(f"{len(known)} publications already on the page.")
 
-    new_by_year: dict[str, list[str]] = {}
-    for pub in publications:
-        bib = pub.get("bib", {})
-        title = bib.get("title", "").strip()
+    new_by_year: dict = {}
+    for paper in papers:
+        title = (paper.get("title") or "").strip()
         if not title:
             continue
         if title.lower() in known:
             print(f"  [skip] {title}")
             continue
 
-        print(f"  [new]  {title}")
-        pub = fill_pub(scholarly, pub)
-        time.sleep(1)          # polite delay
-
-        year = str(pub.get("bib", {}).get("pub_year", "unknown"))
-        new_by_year.setdefault(year, []).append(make_card(pub))
+        year = str(paper.get("year") or "unknown")
+        print(f"  [new]  {title} ({year})")
+        new_by_year.setdefault(year, []).append(make_card(paper))
 
     if not new_by_year:
         print("No new publications – nothing to commit.")
@@ -259,7 +273,7 @@ def main():
         f.write(updated)
 
     print(f"\nDone: {count} new card(s) added to {ABOUT_FILE}.")
-    print("Please review the '<!-- AUTO-ADDED -->' entries and fill in any missing details.")
+    print("Review '<!-- AUTO-ADDED -->' entries and fill in missing GitHub links / venue names.")
 
 
 if __name__ == "__main__":
