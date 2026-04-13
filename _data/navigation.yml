@@ -20,8 +20,8 @@ main:
   - title: "Blog Posts"
     url: /year-archive/
     
-  - title: "💖"
-    url: /heart.html
+  # - title: "💖"
+  #   url: /heart.html
     
   # - title: "Talks"
   #   url: /talks/    
