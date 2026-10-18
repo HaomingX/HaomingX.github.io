@@ -6,9 +6,11 @@ permalink: /publication/2025-02-01-zjuklab-semeval-unlearning
 excerpt: 'This paper presents our approach to SemEval-2025 Task 4, which focuses on unlearning in semantic understanding. We propose a model merging strategy that consolidates alternative model versions to enforce effective knowledge removal.'
 date: 2025-02-01
 venue: 'SemEval-2025'
-paperurl: 'https://arxiv.org/abs/2501.00000'
-citation: 'Xu, H., et al. (2025). &quot;ZJUKLAB at SemEval-2025 Task 4: Unlearning via Model Merging.&quot; <i>SemEval-2025</i>.'
+paperurl: 'https://arxiv.org/abs/2503.21088'
+citation: 'Haoming Xu, Shuxun Wang, Yanqiu Zhao, Yi Zhong, Ziyan Jiang, Ningyuan Zhao, Shumin Deng, Huajun Chen, Ningyu Zhang. &quot;ZJUKLAB at SemEval-2025 Task 4: Unlearning via Model Merging.&quot; <i>SemEval 2025</i>.'
 ---
+
+**Authors:** <strong>Haoming Xu</strong>, Shuxun Wang, Yanqiu Zhao, Yi Zhong, Ziyan Jiang, Ningyuan Zhao, Shumin Deng, Huajun Chen, Ningyu Zhang
 
 SemEval-2025 Task 4 addresses the challenge of machine unlearning in the context of semantic understanding tasks. This task requires systems to effectively remove specific semantic knowledge while maintaining performance on general tasks.
 

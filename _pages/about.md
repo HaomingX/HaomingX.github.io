@@ -28,9 +28,9 @@ I welcome collaborations on LLM belief and trustworthy AI. Please contact me at 
 <div class="publication-card">
   <div class="card-content">
     <div class="card-body">
-      <div class="card-title">When Should Models Change Their Minds? Contextual Belief Management in LLMs</div>
+      <div class="card-title"><a href="https://arxiv.org/abs/2605.30219">When Should Models Change Their Minds? Contextual Belief Management in LLMs</a></div>
       <div class="card-meta"><span>EMNLP 2026 Main</span></div>
-      <div class="card-authors"><strong>Haoming Xu</strong> · First author</div>
+      <div class="card-authors"><strong>Haoming Xu</strong>, Weihong Xu, Zongrui Li, Mengru Wang, Yunzhi Yao, Chiyu Wu, Jin Shang, Yu Gong, Shumin Deng</div>
       <div class="card-description">We introduce Contextual Belief Management (CBM) and BeliefTrack to diagnose failures in belief retention, updating, and isolation. Belief-state rewards for reinforcement learning reduce the average failure rate by 70.9%.</div>
     </div>
   </div>
@@ -39,8 +39,9 @@ I welcome collaborations on LLM belief and trustworthy AI. Please contact me at 
 <div class="publication-card">
   <div class="card-content">
     <div class="card-body">
-      <div class="card-title">Towards Principled Knowledge Editing Methods for Large Language Model Reasoning</div>
-      <div class="card-meta"><span>Under review at Nature Machine Intelligence, 2026</span></div>
+      <div class="card-title"><a href="https://www.nature.com/articles/s42256-026-01276-y">Towards Principled Knowledge Editing Methods for Large Language Model Reasoning</a></div>
+      <div class="card-meta"><span>Nature Machine Intelligence (NMI), 2026</span></div>
+      <div class="card-authors">Ningyu Zhang, Yunzhi Yao, Jiaxin Qin, <strong>Haoming Xu</strong>, Yuqi Zhu, Zeping Yu, Mengru Wang, Yuqi Tang, Jia-Chen Gu, Shumin Deng, Huajun Chen</div>
       <div class="card-description">A systematic analysis of the challenges and limitations of knowledge editing for reasoning models, with directions for principled methods that address reasoning capabilities.</div>
     </div>
   </div>
@@ -68,10 +69,10 @@ I welcome collaborations on LLM belief and trustworthy AI. Please contact me at 
 <div class="publication-card">
   <div class="card-content">
     <div class="card-body">
-      <div class="card-title"><a href="https://www.authorea.com/users/812306/articles/1234567-rethinking-knowledge-editing-in-reasoning-era">Rethinking Knowledge Editing in Reasoning Era</a></div>
+      <div class="card-title"><a href="https://doi.org/10.36227/techrxiv.176240454.46531513/v1">Rethinking Knowledge Editing in Reasoning Era</a></div>
       <div class="card-meta">
         <span class="card-meta-icons">
-          <a href="https://www.authorea.com/users/812306/articles/1234567-rethinking-knowledge-editing-in-reasoning-era" class="card-meta-icon" title="Paper"><i class="fas fa-file-pdf"></i></a>
+          <a href="https://doi.org/10.36227/techrxiv.176240454.46531513/v1" class="card-meta-icon" title="Paper"><i class="fas fa-file-pdf"></i></a>
         </span>
         <span>Authorea 2025</span>
       </div>
@@ -270,18 +271,11 @@ School of Honors, Harbin Institute of Technology, September 2021 - June 2025
 
 ---
 
-## 🛠 Technical Skills {#skills}
-
-Python, C++, PyTorch, Hugging Face Transformers, vLLM, DeepSpeed, Linux, and Git.
-
----
-
 ## 💻 Internship Experience {#internships}
 
-**Algorithm Intern** | *June 2026 - present*<br>
-Alibaba Security AGI Lab · Yuvion Team, China
-
-**AI Technology Intern** | *July 2022 - August 2022*<br>
-LEJU Robotics, Suzhou, China
-
-**Research Intern** | *July 2023 - June 2024* | Research Center for [Social Computing and Interactive Robotics (SCIR)](https://ir.hit.edu.cn/), Harbin Institute of Technology, Harbin, China
+- **Algorithm Intern** | *June 2026 - present*<br>
+  Alibaba Security AGI Lab · Yuvion Team, China
+- **Research Intern** | *July 2023 - June 2024*<br>
+  Research Center for [Social Computing and Interactive Robotics (SCIR)](https://ir.hit.edu.cn/), Harbin Institute of Technology, Harbin, China
+- **AI Technology Intern** | *July 2022 - August 2022*<br>
+  LEJU Robotics, Suzhou, China
