@@ -1,64 +1,21 @@
 ---
-layout: archive
-title: "CV"
+layout: single
+title: "简历 / CV"
 permalink: /cv/
 author_profile: true
 redirect_from:
   - /resume
 ---
 
-{% include base_path %}
+这里提供我的中文简历，包含教育背景、科研成果、项目与实习经历。
 
-Education
-======
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
-* M.S. in Jekyll, GitHub University, 2014
-* B.S. in GitHub, GitHub University, 2012
+研究兴趣：**大模型 Belief 和可信大模型**。
 
-Work experience
-======
-* Spring 2024: Academic Pages Collaborator
-  * GitHub University
-  * Duties includes: Updates and improvements to template
-  * Supervisor: The Users
+[下载中文简历（PDF）]({{ '/files/CV_cn.pdf' | relative_url }}){: .btn .btn--primary}
+[在新标签页打开]({{ '/files/CV_cn.pdf' | relative_url }}){: .btn target="_blank" rel="noopener"}
 
-* Fall 2015: Research Assistant
-  * GitHub University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+<p><small>PDF 为原始简历；当前研究兴趣以本页和主页为准。</small></p>
 
-* Summer 2015: Research Assistant
-  * GitHub University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
-  
-Skills
-======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
-
-Publications
-======
-  <ul>{% for post in site.publications reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Talks
-======
-  <ul>{% for post in site.talks reversed %}
-    {% include archive-single-talk-cv.html  %}
-  {% endfor %}</ul>
-  
-Teaching
-======
-  <ul>{% for post in site.teaching reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Service and leadership
-======
-* Currently signed in to 43 different slack teams
+<object data="{{ '/files/CV_cn.pdf' | relative_url }}" type="application/pdf" width="100%" height="1000" aria-label="徐浩铭中文简历 PDF" style="height: 80vh; min-height: 480px; border: 1px solid #e5e7eb; border-radius: 8px;">
+  <p>如果浏览器无法预览 PDF，请<a href="{{ '/files/CV_cn.pdf' | relative_url }}">点击此处打开或下载中文简历</a>。</p>
+</object>

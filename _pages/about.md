@@ -9,13 +9,13 @@ redirect_from:
 
 ## About Me
 
-I am Haoming Xu, a Master's student in the College of Software at Zhejiang University, focusing on large language models and natural language processing.
+I am Haoming Xu (徐浩铭), a graduate student in the combined Master's and Ph.D. program in Artificial Intelligence at Zhejiang University, advised by Ningyu Zhang and Shumin Deng. I received my bachelor's degree in Computer Science and Technology from Harbin Institute of Technology in 2025.
 
-My research interests center on **editing, unlearning** and **continual learning** for large language models. I work on developing methods to remove specific knowledge from LLMs while preserving performance, as well as exploring how models can learn continuously and achieve evolution. I also maintain an active interest in model reliability, hallucination mitigation, and broader topics in AI safety and robustness.
+My research focuses on **LLM Belief** and **Trustworthy Large Language Models** (大模型 Belief 和可信大模型). I study how language models maintain, update, and isolate beliefs across contexts, and how to diagnose and improve their truthfulness and consistency. My work also explores knowledge editing, machine unlearning, and hallucination mitigation.
 
-I am seeking collaboration peers with same research insterests.
+I welcome collaborations on LLM belief and trustworthy AI. Please contact me at [haomingxu2003@gmail.com](mailto:haomingxu2003@gmail.com).
 
-If you are interested in my work, please contact me at **haomingxu2003@gmail.com**.
+[View my Chinese CV]({{ '/cv/' | relative_url }}) · [Download PDF]({{ '/files/CV_cn.pdf' | relative_url }})
 
 ---
 
@@ -28,16 +28,37 @@ If you are interested in my work, please contact me at **haomingxu2003@gmail.com
 <div class="publication-card">
   <div class="card-content">
     <div class="card-body">
+      <div class="card-title">When Should Models Change Their Minds? Contextual Belief Management in LLMs</div>
+      <div class="card-meta"><span>EMNLP 2026 Main</span></div>
+      <div class="card-authors"><strong>Haoming Xu</strong> · First author</div>
+      <div class="card-description">We introduce Contextual Belief Management (CBM) and BeliefTrack to diagnose failures in belief retention, updating, and isolation. Belief-state rewards for reinforcement learning reduce the average failure rate by 70.9%.</div>
+    </div>
+  </div>
+</div>
+
+<div class="publication-card">
+  <div class="card-content">
+    <div class="card-body">
+      <div class="card-title">Towards Principled Knowledge Editing Methods for Large Language Model Reasoning</div>
+      <div class="card-meta"><span>Under review at Nature Machine Intelligence, 2026</span></div>
+      <div class="card-description">A systematic analysis of the challenges and limitations of knowledge editing for reasoning models, with directions for principled methods that address reasoning capabilities.</div>
+    </div>
+  </div>
+</div>
+
+<div class="publication-card">
+  <div class="card-content">
+    <div class="card-body">
       <div class="card-title"><a href="https://arxiv.org/abs/2601.05905">Illusions of Confidence? Diagnosing LLM Truthfulness via Neighborhood Consistency</a></div>
       <div class="card-meta">
         <span class="card-meta-icons">
           <a href="https://arxiv.org/abs/2601.05905" class="card-meta-icon" title="arXiv"><i class="fas fa-file-pdf"></i></a>
           <a href="https://github.com/zjunlp/belief" class="card-meta-icon" title="Code"><i class="fab fa-github"></i></a>
         </span>
-        <span>arXiv 2026</span>
+        <span>ACL 2026 Main</span>
       </div>
       <div class="card-authors"><strong>Haoming Xu</strong>, Ningyuan Zhao, Yunzhi Yao, Weihong Xu, Hongru Wang, Xinle Deng, Shumin Deng, Jeff Z. Pan, Huajun Chen, Ningyu Zhang</div>
-      <div class="card-description">We propose a novel framework for diagnosing LLM truthfulness via neighborhood consistency analysis.</div>
+      <div class="card-description">We introduce Neighborhood Consistency Belief (NCB) to diagnose fragile beliefs in LLMs and a SAT method that improves robustness by approximately 30%.</div>
     </div>
   </div>
 </div>
@@ -208,7 +229,7 @@ If you are interested in my work, please contact me at **haomingxu2003@gmail.com
           <a href="https://github.com/zjunlp/EasyEdit" class="card-meta-icon" title="GitHub"><i class="fab fa-github"></i></a>
         </span>
       </div>
-      <div class="card-description">An easy-to-use knowledge editing framework for large language models. Supports multiple editing methods including ROME, MEMIT, MEND, and more.</div>
+      <div class="card-description">As a core maintainer, I integrated DPO and QLoRA alignment and fine-tuning modules, contributed to the framework architecture, and optimized MEMIT and ROME for performance and extensibility across model architectures.</div>
     </div>
   </div>
 </div>
@@ -223,7 +244,7 @@ If you are interested in my work, please contact me at **haomingxu2003@gmail.com
           <a href="https://arxiv.org/abs/2510.18866" class="card-meta-icon" title="Paper"><i class="fas fa-file-pdf"></i></a>
         </span>
       </div>
-      <div class="card-description">Lightweight and efficient memory-augmented generation framework for large language models.</div>
+      <div class="card-description">An ICLR 2026 project for efficient long-term memory management and reduced redundancy in long-context scenarios. I contributed to Memory repository baselines and ongoing maintenance.</div>
     </div>
   </div>
 </div>
@@ -232,14 +253,35 @@ If you are interested in my work, please contact me at **haomingxu2003@gmail.com
 
 ## 📖 Education {#education}
 
-**Master of Software Engineering**  
-Zhejiang University, 2025 - present
+**Artificial Intelligence · Combined Master's and Ph.D. Program**<br>
+Zhejiang University, September 2025 - June 2030 (expected)<br>
+Advisors: Ningyu Zhang and Shumin Deng
 
-**Bachelor of Computer Science**  
-  Harbin Institute of Technology, 2021 - 2025
+**Bachelor of Computer Science and Technology**<br>
+School of Honors, Harbin Institute of Technology, September 2021 - June 2025
+
+---
+
+## 🏆 Honors & Competitions {#honors}
+
+- **Second place**, SemEval-2025 Task 4: LLM Unlearning. Led the team in combining unlearning methods and model merging to balance forgetting and retention.
+- **Global Second Prize**, ASC24 Student Supercomputer Challenge. Optimized LLM inference with vLLM, quantization, and early stopping to improve throughput in a supercomputing environment.
+- **Jiang Chen Scholarship** and **Zhejiang Provincial Xinmiao Talent Program**.
+
+---
+
+## 🛠 Technical Skills {#skills}
+
+Python, C++, PyTorch, Hugging Face Transformers, vLLM, DeepSpeed, Linux, and Git.
 
 ---
 
 ## 💻 Internship Experience {#internships}
+
+**Algorithm Intern** | *June 2026 - present*<br>
+Alibaba Security AGI Lab · Yuvion Team, China
+
+**AI Technology Intern** | *July 2022 - August 2022*<br>
+LEJU Robotics, Suzhou, China
 
 **Research Intern** | *July 2023 - June 2024* | Research Center for [Social Computing and Interactive Robotics (SCIR)](https://ir.hit.edu.cn/), Harbin Institute of Technology, Harbin, China
